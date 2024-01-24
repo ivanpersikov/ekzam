@@ -10,8 +10,17 @@ id 'java'
 id 'jacoco'
 }
 
+jacoco {
+    toolVersion = "0.8.9"
+    reportsDirectory = layout.buildDirectory.dir('customJacocoReportDir')
+}
 
-
+test {
+    finalizedBy jacocoTestReport
+}
+jacocoTestReport {
+    dependsOn test
+}
 
 repositories {
 	mavenCentral()
